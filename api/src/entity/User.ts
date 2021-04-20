@@ -2,7 +2,6 @@ import { IsEmail, Length, } from "class-validator";
 import {
     Entity as TOEntity,
     Column,
-    Index,
     BeforeInsert,
     OneToMany
 } from "typeorm";

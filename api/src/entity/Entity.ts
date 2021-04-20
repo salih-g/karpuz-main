@@ -3,12 +3,13 @@ import {
     BaseEntity,
     CreateDateColumn,
     UpdateDateColumn,
+    ObjectIdColumn,
 } from 'typeorm'
 import { classToPlain, Exclude } from 'class-transformer'
 
 export default abstract class Entity extends BaseEntity {
     @Exclude()
-    @PrimaryGeneratedColumn()
+    @ObjectIdColumn()
     id: number
 
     @CreateDateColumn()
