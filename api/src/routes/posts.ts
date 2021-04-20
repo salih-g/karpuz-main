@@ -15,9 +15,9 @@ const createPost = async (req: Request, res: Response) => {
 
     try {
         // find sub
-        const subRecord = await Cekirdek.findOneOrFail({ name: cekirdek })
+        const cekirdekRecord = await Cekirdek.findOneOrFail({ name: cekirdek })
 
-        const post = new Post({ title, body, user, cekirdek: subRecord })
+        const post = new Post({ title, body, user, cekirdek: cekirdekRecord })
         await post.save()
 
         return res.json(post)
