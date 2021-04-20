@@ -1,15 +1,15 @@
 import {
     Entity as TOEntity,
     Column,
-    Index,
     ManyToOne,
     JoinColumn,
     OneToMany,
 } from 'typeorm'
 
+import { makeId, slugify } from '../util/helpers'
+
 import Entity from './Entity'
 import User from './User'
-import { makeId, slugify } from '../util/helpers'
 import Post from './Post'
 
 @TOEntity('cekirdekler')
@@ -38,6 +38,6 @@ export default class Cekirdek extends Entity {
     @JoinColumn({ name: 'username', referencedColumnName: 'username' })
     user: User
 
-    @OneToMany(() => Post, (post) => post.cekirdek)
+    @OneToMany(() => Post, post => post.cekirdek)
     posts: Post[]
 }

@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express'
 import { isEmpty } from 'class-validator'
-import { getRepository } from 'typeorm'
+import { getMongoRepository } from 'typeorm'
 
 import User from '../entity/User'
 import Cekirdek from '../entity/Cekirdek'
@@ -12,16 +12,13 @@ const createCekirdek = async (req: Request, res: Response) => {
     const user: User = res.locals.user
 
     try {
+
         let errors: any = {}
         if (isEmpty(name)) errors.name = 'Name must not be empty'
         if (isEmpty(title)) errors.title = 'Title must not be empty'
 
-        const cekirdek = await getRepository(Cekirdek)
-            .createQueryBuilder('cekirdek')
-            .where('lower(cekirdek.name) = :name', { name: name.toLowerCase() })
-            .getOne()
 
-        if (cekirdek) errors.name = 'Cekirdek exists already'
+        console.log(errors)
 
         if (Object.keys(errors).length > 0) {
             throw errors
