@@ -4,9 +4,9 @@ import {
     ManyToOne,
     JoinColumn,
     OneToMany,
+    Index,
 } from 'typeorm'
 
-import { makeId, slugify } from '../util/helpers'
 
 import Entity from './Entity'
 import User from './User'
@@ -18,7 +18,7 @@ export default class Cekirdek extends Entity {
         super()
         Object.assign(this, cekirdek)
     }
-
+    @Index()
     @Column({ unique: true })
     name: string
 

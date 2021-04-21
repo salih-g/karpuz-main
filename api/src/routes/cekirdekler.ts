@@ -1,6 +1,5 @@
 import { Request, Response, Router } from 'express'
 import { isEmpty } from 'class-validator'
-import { getMongoRepository } from 'typeorm'
 
 import User from '../entity/User'
 import Cekirdek from '../entity/Cekirdek'
