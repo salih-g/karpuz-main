@@ -4,7 +4,6 @@ import {
     ManyToOne,
     JoinColumn,
     OneToMany,
-    Index,
 } from 'typeorm'
 
 
@@ -18,7 +17,6 @@ export default class Cekirdek extends Entity {
         super()
         Object.assign(this, cekirdek)
     }
-    @Index()
     @Column({ unique: true })
     name: string
 
