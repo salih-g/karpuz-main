@@ -1,23 +1,18 @@
 {
-   "type": "mongodb",
-   "url": "mongodb+srv://admin:Bluesoul123@todoapp.flfgr.mongodb.net/karpuz?retryWrites=true&w=majority",
-   "useUnifiedTopology": true,
-   "useNewUrlParser": true,
-   "database": "karpuz",
-   "synchronize": true,
-   "logging": true,
-   "entities": [
-      "src/entity/**/*.ts"
-   ],
-   "migrations": [
-      "src/migration/**/*.ts"
-   ],
-   "subscribers": [
-      "src/subscriber/**/*.ts"
-   ],
-   "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
-   }
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "987456",
+  "database": "karpuz",
+  "synchronize": false,
+  "logging": true,
+  "entities": ["src/entities/**/*.ts"],
+  "migrations": ["src/migrations/**/*.ts"],
+  "subscribers": ["src/subscribers/**/*.ts"],
+  "cli": {
+    "entitiesDir": "src/entities",
+    "migrationsDir": "src/migrations",
+    "subscribersDir": "src/subscribers"
+  }
 }
