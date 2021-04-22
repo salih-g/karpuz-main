@@ -29,7 +29,7 @@ export default function Register() {
   };
 
   return (
-    <div className='flex'>
+    <div className='flex' style={{ backgroundColor: 'white' }}>
       <Head>
         <title>Login</title>
       </Head>

@@ -1,14 +1,12 @@
 module.exports = {
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
+  purge: ['./src/**/*.tsx'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    fontFamily:{
-      body:['IBM Plex Sans']
-    },
-  
+    fontFamily: {
+      body: ['IBM Plex Sans'],
     },
     extend: {
-      colors:{
+      colors: {
         pink:{
           100:'#fff0f3',
           200:'#ffe2e6',
@@ -20,16 +18,26 @@ module.exports = {
           800:'#66494d',
           900:'#332427',
         },
-      spacing:{
-        70: '17.5rem'
-      }
+        gray:{
+          100:'#d4d4d4',
+          200:'#a9a9a9',
+          300:'#7d7d7f',
+          400:'#525254',
+          500:'#272729',
+          600:'#1f1f21',
+          700:'#1f1f21',
+          800:'#101010',
+          900:'#080808',
+        },
+      },
+      spacing: {
+        70: '17.5rem',
+        160: '40rem',
+      },
     },
   },
   variants: {
-    extend: {
-      backgroundColor: ['checked'],
-      borderColor: ['checked'],
-    },
+    extend: {},
   },
   plugins: [],
 }
