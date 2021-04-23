@@ -3,10 +3,7 @@ import Link from 'next/link';
 import KarpuzLogo from '../images/karpuz.svg';
 
 const Navbar: React.FC = () => (
-  <div
-    className='fixed inset-x-0 top-0 z-10 flex items-center justify-center h-10 px-5'
-    style={{ backgroundColor: '#1A1A1B' }}
-  >
+  <div className='fixed inset-x-0 top-0 z-10 flex items-center justify-center h-11 px-5 bg-gray-800 border-b-0.5 border-gray-400'>
     {/**Logo and title */}
     <div className='flex items-center'>
       <Link href='/'>
@@ -14,7 +11,7 @@ const Navbar: React.FC = () => (
           <KarpuzLogo className='w-8 h-8 mr-2' />
         </a>
       </Link>
-      <span className='text-2xl font-semibold text-white'>
+      <span className='text-2xl font-semibold text-gray-100'>
         <Link href='/'>karpuz</Link>
       </span>
     </div>

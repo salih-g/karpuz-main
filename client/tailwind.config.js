@@ -5,6 +5,11 @@ module.exports = {
     fontFamily: {
       body: ['IBM Plex Sans'],
     },
+    borderWidth: {
+      DEFAULT: '1px',
+      '0.5': '0.5px',
+    },
+    
     extend: {
       colors: {
         pink:{
@@ -19,25 +24,40 @@ module.exports = {
           900:'#332427',
         },
         gray:{
-          100:'#d4d4d4',
+          100:'#d4d4d4',//text color
           200:'#a9a9a9',
           300:'#7d7d7f',
           400:'#525254',
-          500:'#272729',
+          500:'#272729',//Search button içi
           600:'#1f1f21',
           700:'#1f1f21',
-          800:'#101010',
-          900:'#080808',
+          800:'#1A1A1B',//navbar
+          900:'#030303',//Background
         },
       },
       spacing: {
         70: '17.5rem',
         160: '40rem',
       },
+      container: false,
+    
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function({addComponents}){
+     addComponents({
+      '.container':{
+        width: '100%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        '@screen sm': {maxWidth: '640px'},
+        '@screen md': {maxWidth: '768px'},
+        '@screen lg': {maxWidth: '975px'},
+      }
+     })
+    }
+  ],
 }

@@ -28,7 +28,7 @@ class MyDocument extends Document {
             crossOrigin='anonymous'
           />
         </Head>
-        <body className='font-body' style={{ backgroundColor: '#030303' }}>
+        <body className='bg-gray-900 font-body'>
           <Main />
           <NextScript />
         </body>
