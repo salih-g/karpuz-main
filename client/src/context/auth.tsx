@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { User } from '../types';
 
@@ -30,9 +30,17 @@ const reducer = (state: State, { type, payload }: Action) => {
         user: payload,
       };
     case 'LOGOUT':
-      return { ...state, authenticated: false, user: null };
+      return {
+        ...state,
+        authenticated: false,
+        user: null,
+      };
     case 'STOP_LOADING':
-      return { ...state, loading: false };
+      return {
+        ...state,
+        loading: false,
+      };
+
     default:
       throw new Error(`Unknow action type: ${type}`);
   }
@@ -51,7 +59,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     async function loadUser() {
       try {
-        const res = await Axios.get('/auth/me');
+        const res = await axios.get('/auth/me');
         dispatch('LOGIN', res.data);
       } catch (err) {
         console.log(err);
