@@ -8,7 +8,7 @@ import {
   OneToMany,
   AfterLoad,
 } from 'typeorm'
-import { Expose } from 'class-transformer'
+import { Exclude, Expose } from 'class-transformer'
 
 import Entity from './Entity'
 import User from './User'
@@ -52,10 +52,11 @@ export default class Post extends Entity {
   @JoinColumn({ name: 'subName', referencedColumnName: 'name' })
   sub: Sub
 
+  @Exclude()
   @OneToMany(() => Comment, (comment) => comment.post)
   comments: Comment[]
 
-
+  @Exclude()
   @OneToMany(() => Vote, vote => vote.post)
   votes: Vote[]
 

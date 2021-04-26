@@ -18,10 +18,11 @@ export default function Register() {
     event.preventDefault();
 
     try {
-      await Axios.post('/auth/login', {
+      const res = await Axios.post('/auth/login', {
         password,
         username,
       });
+
       router.push('/');
     } catch (err) {
       setErrors(err.response.data);
