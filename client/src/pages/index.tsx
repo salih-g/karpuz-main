@@ -3,12 +3,11 @@ import { Fragment } from 'react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import useSWR from 'swr';
-
-import { Sub } from '../types';
-
-import PostCard from '../components/PostCard';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { Sub } from '../types';
+import PostCard from '../components/PostCard';
 
 dayjs.extend(relativeTime);
 
