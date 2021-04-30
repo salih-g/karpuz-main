@@ -37,7 +37,7 @@ app.use('/api/subs', subRoutes)
 app.use('/api/misc', miscRoutes)
 
 app.listen(PORT, async () => {
-  console.log(`Server running at http://localhost:${PORT}`)
+  console.log(`Server running at ${process.env.APP_URL}`)
 
   try {
     await createConnection()

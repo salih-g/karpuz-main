@@ -26,9 +26,9 @@ module.exports = {
         gray:{
           100:'#d4d4d4',//text color
           200:'#a9a9a9',
-          300:'#7d7d7f',
+          300:'#7d7d7f',//koyu text
           400:'#525254',
-          500:'#272729',//Search button içi
+          500:'#272729',//Search button  and card
           600:'#1f1f21',
           700:'#1f1f21',
           800:'#1A1A1B',//navbar

@@ -2,14 +2,15 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ChangeEvent, createRef, Fragment, useEffect, useState } from 'react';
 import useSWR from 'swr';
-import PostCard from '../../components/PostCard';
 import Image from 'next/image';
 import classNames from 'classnames';
+import axios from 'axios';
 
 import { Sub } from '../../types';
-
 import { useAuthState } from '../../context/auth';
-import axios from 'axios';
+
+import PostCard from '../../components/PostCard';
+import Sidebar from '../../components/Sidebar';
 
 export default function SubPage() {
     //Local state
@@ -140,6 +141,7 @@ export default function SubPage() {
                     {/** Posts & sidebar*/}
                     <div className='container flex pt-5 text-gray-100'>
                         <div className='w-160'>{postsMarkup}</div>
+                        <Sidebar sub={sub} />
                     </div>
                 </Fragment>
             )}

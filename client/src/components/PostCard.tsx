@@ -50,7 +50,10 @@ export default function PostCard({
     };
 
     return (
-        <div key={identifier} className='flex mb-4 bg-gray-500 rounded'>
+        <div
+            key={identifier}
+            className='flex mb-4 bg-gray-500 rounded border-0.5 border-gray-400'
+        >
             {/**Vote section */}
             <div className='w-10 py-3 text-center bg-gray-600 rounded-l'>
                 {/**Up vote */}
