@@ -4,10 +4,12 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import axios from 'axios';
 import classNames from 'classnames';
 import router from 'next/router';
+import Image from 'next/image';
 
-import { Post } from '../types';
+import { Post, Sub } from '../types';
 import { useAuthState } from '../context/auth';
 import ActionButton from './ActionButton';
+import useSWR from 'swr';
 
 dayjs.extend(relativeTime);
 
@@ -31,6 +33,10 @@ export default function PostCard({
   },
 }: PostCardProps) {
   const { authenticated } = useAuthState();
+
+  const { data: sub, error, revalidate } = useSWR<Sub>(
+    subName ? `/subs/${subName}` : null
+  );
 
   const vote = async (value: number) => {
     //If not logged in go to login
@@ -94,12 +100,19 @@ export default function PostCard({
       {/**Post data Section */}
       <div className='p-2 w-ful'>
         <div className='flex items-center'>
-          <Link href={`/k/${subName}`}>
-            <img
-              src='https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y'
-              className='w-5 h-5 mr-1 rounded-full cursor-pointer'
-            />
-          </Link>
+          {sub && (
+            <Link href={`/k/${subName}`}>
+              <a className='mr-1'>
+                <Image
+                  src={sub.imageUrl}
+                  alt='Sub'
+                  className='rounded-full'
+                  width={20}
+                  height={20}
+                />
+              </a>
+            </Link>
+          )}
           <Link href={`/k/${subName}`}>
             <a className='text-xs font-bold cursor-pointer hover:underline'>
               /k/{subName}
