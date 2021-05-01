@@ -23,7 +23,7 @@ export default function user() {
 
       {data && (
         <div className='container flex pt-5 text-gray-100'>
-          <div className='rounded w-160 '>
+          <div className='w-full px-4 rounded md:w-160 md:p-0 '>
             {data.submissions.map((submission: any) => {
               if (submission.type === 'Post') {
                 const post: Post = submission;
@@ -64,7 +64,7 @@ export default function user() {
             })}
           </div>
 
-          <div className='ml-6 w-80 '>
+          <div className='hidden ml-6 md:block w-80'>
             <div className='bg-gray-500 rounded border-0.5 border-gray-400'>
               <div className='p-3 bg-pink-600 rounded-t'>
                 <img

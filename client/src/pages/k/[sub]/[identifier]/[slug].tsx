@@ -101,7 +101,7 @@ export default function PostPage() {
         </Link>
         <div className='container flex pt-5 text-gray-100'>
           {/* Post*/}
-          <div className='w-160'>
+          <div className='w-full px-4 md:w-160 md:p-0'>
             <div className='bg-gray-500 rounded border-0.5 border-gray-400'>
               {post && (
                 <>

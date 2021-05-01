@@ -61,13 +61,13 @@ export default function PostCard({
   return (
     <div
       key={identifier}
-      className='flex mb-4 bg-gray-500 rounded border-0.5 border-gray-400'
+      className='flex mb-4 bg-gray-500 rounded border-0.5 border-gray-400 hover:border-white'
     >
       {/**Vote section */}
       <div className='w-10 py-3 text-center bg-gray-600 rounded-l'>
         {/**Up vote */}
         <div
-          className='w-6 mx-auto text-gray-200 rounded cursor-pointer hover:bg-gray-400 hover:text-pink-600'
+          className='w-6 mx-auto text-gray-200 rounded cursor-pointer hover:bg-gray-400 hover:text-pink-600 '
           onClick={() => vote(1)}
         >
           <i
@@ -134,7 +134,13 @@ export default function PostCard({
         <Link href={url}>
           <a className='my-1 text-lg font-medium'>{title}</a>
         </Link>
-        {body && <p className='my-1 text-xm'>{body}</p>}
+        {body && (
+          <p className='my-1 text-xm'>
+            <Link href={url}>
+              <a>{body}</a>
+            </Link>
+          </p>
+        )}
 
         <div className='flex'>
           <Link href={url}>

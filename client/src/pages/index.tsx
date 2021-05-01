@@ -6,14 +6,17 @@ import useSWR from 'swr';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Sub } from '../types';
+import { Post, Sub } from '../types';
 import PostCard from '../components/PostCard';
+import { useAuthState } from '../context/auth';
 
 dayjs.extend(relativeTime);
 
 export default function Home() {
-  const { data: posts } = useSWR('/posts');
-  const { data: topSubs } = useSWR('/misc/top-subs');
+  const { data: posts } = useSWR<Post[]>('/posts');
+  const { data: topSubs } = useSWR<Sub[]>('/misc/top-subs');
+
+  const { authenticated } = useAuthState();
 
   return (
     <Fragment>
@@ -23,20 +26,20 @@ export default function Home() {
 
       <div className='container flex pt-4 text-gray-100'>
         {/**Post feed */}
-        <div className='w-160'>
+        <div className='w-full px-4 md:w-160 md:p-0'>
           {posts?.map((post) => (
             <PostCard post={post} key={post.identifier} />
           ))}
         </div>
         {/**Sidebar */}
-        <div className='ml-6 w-80'>
+        <div className='hidden ml-6 md:block w-80'>
           <div className='bg-gray-500 border-0.5 border-gray-400 rounded'>
             <div className='p-4'>
               <p className='pb-4 text-base font-semibold text-left text-gray-300'>
                 Top Communities
               </p>
               <div>
-                {topSubs?.map((sub: Sub) => (
+                {topSubs?.map((sub) => (
                   <div
                     key={sub.name}
                     className='flex items-center px-4 py-2 text-xs text-gray-100'
@@ -61,6 +64,16 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+              <div className='border-b border-gray-400 '></div>
+              {authenticated && (
+                <div className='p-4 '>
+                  <Link href='/subs/create'>
+                    <a className='w-full px-2 py-1 pink button'>
+                      Create Community
+                    </a>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

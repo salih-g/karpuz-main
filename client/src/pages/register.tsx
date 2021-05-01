@@ -67,7 +67,8 @@ export default function Register() {
                 onChange={(e) => setAgreement(e.target.checked)}
               />
               <label htmlFor='agreement' className='text-xs cursor-pointer'>
-                I agree to get emails about cool stuff on Karpuz
+                I agree to get emails about cool stuff on Karpuz{' '}
+                <span className='text-pink-500'>*</span>
               </label>
               <small className='block font-medium text-red-600'>
                 {errors.agreement}

@@ -8,7 +8,7 @@ export default function Sidebar({ sub }: { sub: Sub }) {
   const { authenticated } = useAuthState();
 
   return (
-    <div className='ml-6 w-80'>
+    <div className='hidden ml-6 md:block w-80'>
       <div className='bg-gray-500 rounded border-0.5 border-gray-400'>
         <div className='p-3 bg-pink-500 rounded-t'>
           <p className='font-semibold text-white'>About Community</p>
@@ -28,6 +28,14 @@ export default function Sidebar({ sub }: { sub: Sub }) {
           <p className='my-3'>
             <i className='mr-2 fas fa-birthday-cake'></i>
             Created {dayjs(sub.createdAt).format('D MMM YYYY')}
+          </p>
+          <p className='my-3'>
+            Created by
+            <Link href={`/u/${sub.username}`}>
+              <a className='mx-1 text-pink-500 hover:underline'>
+                {sub.username}
+              </a>
+            </Link>
           </p>
           {authenticated && (
             <Link href={`/k/${sub.name}/submit`}>
