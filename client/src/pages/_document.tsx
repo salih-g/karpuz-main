@@ -16,7 +16,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Karpuz</title>
           <link rel='icon' type='image/svg+xml/' href='/karpuz.svg' />
           <meta property='og:site_name' content='karpuz' />
           <meta property='og:type' content='website' />
