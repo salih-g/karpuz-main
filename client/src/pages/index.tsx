@@ -13,9 +13,9 @@ import { useAuthState } from '../context/auth';
 dayjs.extend(relativeTime);
 
 export default function Home() {
-  const [observedPost, setObservedPost] = useState('');
+  //const [observedPost, setObservedPost] = useState('');
 
-  //const { data: posts } = useSWR<Post[]>('/posts');
+  const { data: posts, revalidate } = useSWR<Post[]>('/posts');
   const { data: topSubs } = useSWR<Sub[]>('/misc/top-subs');
 
   const description =
@@ -25,43 +25,43 @@ export default function Home() {
 
   const { authenticated } = useAuthState();
 
-  const {
-    data,
-    size: page,
-    setSize: setPage,
-    isValidating,
-    revalidate,
-    error,
-  } = useSWRInfinite<Post[]>((index) => `/posts?page=${index}`);
+  // const {
+  //   data,
+  //   size: page,
+  //   setSize: setPage,
+  //   isValidating,
+  //   revalidate,
+  //   error,
+  // } = useSWRInfinite<Post[]>((index) => `/posts?page=${index}`);
 
-  const isInitialLoading = !data && !error;
-  const posts: Post[] = data ? [].concat(...data) : [];
+  // const isInitialLoading = !data && !error;
+  // const posts: Post[] = data ? [].concat(...data) : [];
 
-  useEffect(() => {
-    if (!posts || posts.length === 0) return;
+  // useEffect(() => {
+  //   if (!posts || posts.length === 0) return;
 
-    const id = posts[posts.length - 1].identifier;
+  //   const id = posts[posts.length - 1].identifier;
 
-    if (id !== observedPost) {
-      setObservedPost(id);
-      observeElement(document.getElementById(id));
-    }
-  }, [posts]);
+  //   if (id !== observedPost) {
+  //     setObservedPost(id);
+  //     observeElement(document.getElementById(id));
+  //   }
+  // }, [posts]);
 
-  const observeElement = (element: HTMLElement) => {
-    if (!element) return;
+  // const observeElement = (element: HTMLElement) => {
+  //   if (!element) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting === true) {
-          setPage(page + 1);
-          observer.unobserve(element);
-        }
-      },
-      { threshold: 1 }
-    );
-    observer.observe(element);
-  };
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       if (entries[0].isIntersecting === true) {
+  //         setPage(page + 1);
+  //         observer.unobserve(element);
+  //       }
+  //     },
+  //     { threshold: 1 }
+  //   );
+  //   observer.observe(element);
+  // };
 
   return (
     <Fragment>
@@ -77,7 +77,7 @@ export default function Home() {
       <div className='container flex pt-4 text-gray-100'>
         {/**Post feed */}
         <div className='w-full px-4 md:w-160 md:p-0'>
-          {isInitialLoading && <p className='text-lg text-center'>Loading..</p>}
+          {/*  {isInitialLoading && <p className='text-lg text-center'>Loading..</p>}*/}
           {posts?.map((post) => (
             <PostCard
               post={post}
@@ -85,9 +85,9 @@ export default function Home() {
               revalidate={revalidate}
             />
           ))}
-          {isValidating && posts.length > 0 && (
+          {/*  {isValidating && posts.length > 0 && (
             <p className='text-lg text-center'>Loading More..</p>
-          )}
+          )}*/}
         </div>
         {/**Sidebar */}
         <div className='hidden ml-6 md:block w-80'>

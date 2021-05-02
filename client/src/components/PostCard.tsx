@@ -42,10 +42,8 @@ export default function PostCard({
   const isInSubPage = router.pathname === '/k/[sub]';
 
   const vote = async (value: number) => {
-    //If not logged in go to login
     if (!authenticated) router.push('/login');
 
-    //If vote is the same reset vote
     if (value === userVote) value = 0;
 
     try {
