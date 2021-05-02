@@ -18,6 +18,11 @@ export default function Home() {
   //const { data: posts } = useSWR<Post[]>('/posts');
   const { data: topSubs } = useSWR<Sub[]>('/misc/top-subs');
 
+  const description =
+    "Karpuz is a network of communities based on people's interests. Find communities you're interested in, and become part of an online community!";
+
+  const title = 'karpuz: the front page of the internet';
+
   const { authenticated } = useAuthState();
 
   const {
@@ -61,7 +66,12 @@ export default function Home() {
   return (
     <Fragment>
       <Head>
-        <title>karpuz: the front page of the internet</title>
+        <title>{title}</title>
+        <meta name='description' content={description}></meta>
+        <meta property='og:description' content={description} />
+        <meta property='og:title' content={title} />
+        <meta property='twitter:description' content={description} />
+        <meta property='twitter:title' content={title} />
       </Head>
 
       <div className='container flex pt-4 text-gray-100'>
