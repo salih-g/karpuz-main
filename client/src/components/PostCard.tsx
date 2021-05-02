@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import axios from 'axios';
 import classNames from 'classnames';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { Post, Sub } from '../types';
@@ -15,6 +15,7 @@ dayjs.extend(relativeTime);
 
 interface PostCardProps {
   post: Post;
+  revalidate?: Function;
 }
 
 export default function PostCard({
@@ -30,13 +31,15 @@ export default function PostCard({
     commentCount,
     url,
     username,
+    sub,
   },
+  revalidate,
 }: PostCardProps) {
   const { authenticated } = useAuthState();
 
-  const { data: sub, error, revalidate } = useSWR<Sub>(
-    subName ? `/subs/${subName}` : null
-  );
+  const router = useRouter();
+
+  const isInSubPage = router.pathname === '/k/[sub]';
 
   const vote = async (value: number) => {
     //If not logged in go to login
@@ -52,7 +55,7 @@ export default function PostCard({
         value,
       });
 
-      console.log(res.data);
+      if (revalidate) revalidate();
     } catch (err) {
       console.log(err);
     }
@@ -62,6 +65,7 @@ export default function PostCard({
     <div
       key={identifier}
       className='flex mb-4 bg-gray-500 rounded border-0.5 border-gray-400 hover:border-white'
+      id={identifier}
     >
       {/**Vote section */}
       <div className='w-10 py-3 text-center bg-gray-600 rounded-l'>
@@ -100,26 +104,31 @@ export default function PostCard({
       {/**Post data Section */}
       <div className='p-2 w-ful'>
         <div className='flex items-center'>
-          {sub && (
-            <Link href={`/k/${subName}`}>
-              <a className='mr-1'>
-                <Image
-                  src={sub.imageUrl}
-                  alt='Sub'
-                  className='rounded-full'
-                  width={20}
-                  height={20}
-                />
-              </a>
-            </Link>
+          {!isInSubPage && (
+            <>
+              {sub && (
+                <Link href={`/k/${subName}`}>
+                  <a className='mr-1'>
+                    <Image
+                      src={sub.imageUrl}
+                      alt='Sub'
+                      className='rounded-full'
+                      width={20}
+                      height={20}
+                    />
+                  </a>
+                </Link>
+              )}
+              <Link href={`/k/${subName}`}>
+                <a className='text-xs font-bold cursor-pointer hover:underline'>
+                  /k/{subName}
+                </a>
+              </Link>
+              <span className='mx-1 text-xs text-gray-300'>•</span>
+            </>
           )}
-          <Link href={`/k/${subName}`}>
-            <a className='text-xs font-bold cursor-pointer hover:underline'>
-              /k/{subName}
-            </a>
-          </Link>
           <p className='text-xs text-gray-300'>
-            <span className='mx-1'>•</span>Posted by
+            Posted by
             <Link href={`/u/${username}`}>
               <a className='mx-1 hover:underline '>/u/{username}</a>
             </Link>
