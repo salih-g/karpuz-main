@@ -1,47 +1,30 @@
+  
 {
   "compilerOptions": {
-    // https://www.typescriptlang.org/tsconfig
-    "lib": [
-      "es5",
-      "es6"
-    ],
     "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "./build",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
-    // Additions
-    "esModuleInterop": true,
-    // Strict stuff
-    // "strict": true,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    // "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    // Extra
-    "alwaysStrict": true,
-    // "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"
   },
   "include": [
-    "src/**/*"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
-    "node_modules",
-    "client"
+    "node_modules"
   ]
 }
