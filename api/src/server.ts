@@ -39,7 +39,7 @@ app.use('/api/misc', miscRoutes)
 app.use('/api/users', userRoutes)
 
 app.listen(PORT, async () => {
-  console.log(`Server running at ${process.env.APP_URL}`)
+  console.log(`Server running at http://localhost:${PORT}`)
 
   try {
     await createConnection()
