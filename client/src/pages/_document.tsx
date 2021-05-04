@@ -17,6 +17,10 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel='icon' type='image/svg+xml/' href='/karpuz.svg' />
+          <meta
+            http-equiv='Content-Security-Policy'
+            content='upgrade-insecure-requests'
+          ></meta>
           <meta property='og:site_name' content='karpuz' />
           <meta property='og:type' content='website' />
           <meta
