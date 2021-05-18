@@ -20,7 +20,7 @@ jobs:
               cd ..
               cd client
               npm run build
-              pm2 restart server client
+              pm2 restart karpuz-api karpuz-client
             host: ${{ secrets.HOST }}
             username: ${{secrets.USERNAME}}
             privateKey: ${{ secrets.PRIVATE_KEY}}
