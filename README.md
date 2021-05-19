@@ -1,3 +1,3 @@
 #This is a reddit clone
 
-## Live sample https://karpuz.xyz/
+# Live sample https://karpuz.xyz/
